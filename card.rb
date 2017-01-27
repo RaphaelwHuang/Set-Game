@@ -7,27 +7,42 @@
 	Color: Red, Green, Purple
 =end
 class Card
-	NUMBER = %w(1 2 3)
-	SYMBOL = %w(Diamond Squiggle Oval)
-	SHADING = %w(Solid Striped Open)
-	COLOR = %w(Red Green Purple)
+	# Arrays of symbols
+	NUMBERS = %w(1 2 3)
+	SHAPES = %w(Diamond Squiggle Oval)
+	SHADINGS = %w(Solid Striped Open)
+	COLORS = %w(Red Green Purple)
 
-	attr_accessor :number, :symbol, :shading, :color
+	attr_accessor :number, :shape, :shading, :color
 
-	def initialize(id)
-		self.number = NUMBER[id % 3]
-		self.symbol = SYMBOL[id % 3]
-		self.shading = SHADING[id % 3]
-		self.color = COLOR[id % 3]
-	end
+  # Initializes the cards.
+  # Parameters can be entered in any order.
+  # Expects all param to be strings.
+  # If less/more than 4 parameters are entered
+  #   will return an invalid card.
+	def initialize(*param)
+    raise "Expected 4 parameters" if param.length != 4
+    param.each do |value|
+      if SHAPES.include?(value)
+        self.shape = value
+      elsif COLORS.include?(value)
+        self.color = value
+      elsif NUMBERS.include?(value)
+        self.number = value
+      elsif SHADINGS.include?(value)
+        self.shading = value
+      else
+        raise "Unexpected Parameter: Intialization of Card failed."
+      end
+    end
+  end
 
-	def display
-		puts self.number
-		puts self.symbol
-		puts self.shading
-		puts self.color
+  # Returns the card as the string formatted as such:
+  # "number symbol shading color"
+	def to_s
+    return "#{number} #{shape} #{shading} #{color}"
 	end
 end
 
-var = Card.new(4)
-var.display
+var = Card.new("1", "Diamond", "Striped", "Red")
+puts var.to_s
