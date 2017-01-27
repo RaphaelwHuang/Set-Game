@@ -3,7 +3,7 @@
 
 ### Roles
 * Overall Project Manager: Kenton Steiner
-* Coding Manager: Jenn Alarcon
+* Coding Manager: Jennifer Alarcon
 * Testing Manager: Tony Su
 * Documentation: Sunny Patel
 
