@@ -18,11 +18,14 @@ class Card
 
 	attr_accessor :number, :shape, :shading, :color
 
-  # Initializes the cards.
-  # - Parameters can be entered in any order.
-  # - Expects all parameters to be strings that are
-  #     included in the corresponding attribute array
-  # - Expects exactly 4 parameters
+=begin 
+	Initializes the cards.
+   - Parameters can be entered in any order.
+   - Expects all parameters to be strings that are
+   included in the corresponding attribute array
+	Expects exactly 4 parameters
+=end
+
 	def initialize(*param)
     raise "Expected 4 parameters" if param.length != 4
     param.each do |value|

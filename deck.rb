@@ -1,4 +1,4 @@
-# Author::        Sunny Patel
+# Author::        Sunny Patel, Kenton Steiner
 # Creation Date:: 1/27
 
 
@@ -30,5 +30,10 @@ class Deck < Card
   # Returns the number of cards in the deck
   def size
     @deck.length
+  end
+
+  # Displays the number of cards left in the deck
+  def display_size
+    puts "# of Cards left in deck: #{size}"
   end
 end
