@@ -21,18 +21,19 @@ class Deck < Card
     end
     @deck.shuffle!
   end
-
+	# Method Author: Sunny Patel
   # Removes a card from @deck and returns it to caller
   def draw
     @deck.shift
   end
-
+	#Author: Sunny Patel
   # Returns the number of cards in the deck
   def size
     @deck.length
   end
 
-  # Displays the number of cards left in the deck
+  # Method Author: Kenton Steiner - 1/30/17
+	# Displays the number of cards left in the deck
   def display_size
     puts "# of Cards left in deck: #{size}"
   end
