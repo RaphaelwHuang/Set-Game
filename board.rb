@@ -8,27 +8,43 @@ STARTINGCARDS = 12
 
 class Board < Deck
 	#deck and card can only be read
+	#class variabel to keep track of number of sets found
+	@@total_sets_found
 	attr_reader :card, :deck
 
 	# Method Author: Kenton Steiner - 1/30/17
 	# Description: Initialize the board array, deck, and create the starting board
 	# Team Member           Date           Changes
-	#
+	# Jenn Alarcon					2/1/17					modification to deck and board initlization of cards
 
 	def initialize(cards = [])
 		@board = cards
-		@deck = :deck
+		@deck = Deck.new().deck
 		STARTINGCARDS.times do
-		card = @deck.draw
-		@board.push(card)
+			card = @deck.shift
+			@board.push(card)
 		end
 	end
 
+	#Author: Kenton Steiner - 2/1/17
+	#Description:
+	# Team Member           Date           Changes
+	#
 	def render_board
 		header = "\nCurrentBoard:\n"
 
-
 	end
+
+		#Author: Jennifer Alarcon - 2/1/17
+		#Description: Show cards in current hand
+		# Team Member           Date           Changes
+		#
+		def displayCurrentHand
+			@board.length().times do |i|
+				puts "Card #{i}".center(35)
+				puts @board[i]
+			end
+		end
 
 	#Author: Kenton Steiner - 2/1/17
 	#Description: Returns an array of the indices of the cards to check for a set
@@ -71,10 +87,12 @@ class Board < Deck
 	# Method Author: Kenton Steiner - 2/1/17
 	# Description: Adds 3 new cards to the board
 	# Team Member           Date           Changes
-	# 
+	#
 	def add_cards
 		3.times { @board.push(@deck.draw) }
 	end
+
+
 
 
 
