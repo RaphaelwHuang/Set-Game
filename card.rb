@@ -18,7 +18,7 @@ class Card
 
 	attr_accessor :number, :shape, :shading, :color
 
-=begin 
+=begin
 	Initializes the cards.
    - Parameters can be entered in any order.
    - Expects all parameters to be strings that are
@@ -26,6 +26,12 @@ class Card
 	Expects exactly 4 parameters
 =end
 
+#Created by:
+# Date created:
+# Description:
+#
+# Team Member           Date           Changes
+#
 	def initialize(*param)
     raise "Expected 4 parameters" if param.length != 4
     param.each do |value|
@@ -45,7 +51,22 @@ class Card
 
   # Returns the card as the string formatted as such:
   # "number symbol shading color"
+	Created by:
+
+# Date created:Sunny Patel
+# Description:
+#
+# Team Member           Date           Changes
+# Sunny Patel
+# Jenn Alarcon					1/30/17					Modified String Dislay
+
 	def to_s
-    return "#{number} #{shape} #{shading} #{color}"
+				return	"\t++++++++++++++++++\n"+
+								"\t+\t\t+\n"+
+								"\t+\t\t+\n"+
+  							"#{number.center(35)}\n#{shape.center(35)}\n#{shading.center(35)}\n#{color.center(35)}\n"+
+									"\t+\t\t+\n"+
+									"\t+\t\t+\n"+
+								"\t++++++++++++++++++\n"
 	end
 end
