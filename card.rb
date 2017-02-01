@@ -49,16 +49,13 @@ class Card
     end
   end
 
-  # Returns the card as the string formatted as such:
-  # "number symbol shading color"
-	Created by:
-
-# Date created:Sunny Patel
-# Description:
-#
+#Created by: Sunny Patel
+# Date created: 1/26
+# Description: Returns the card as the string formatted as such:
+# => 		"number symbol shading color"
 # Team Member           Date           Changes
-# Sunny Patel
-# Jenn Alarcon					1/30/17					Modified String Dislay
+# Jenn Alarcon		1/30/17		Modified String Dislay
+
 
 	def to_s
 				return	"\t++++++++++++++++++\n"+
