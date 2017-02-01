@@ -8,13 +8,13 @@ STARTINGCARDS = 12
 class Board < Deck
 	#deck and card can only be read
 	attr_reader :card, :deck
-	
+
 	# Method Author: Kenton Steiner - 1/30/17
 	# Initialize the board array, deck, and create the starting board
 	def initialize(cards = [])
 		@board = cards
 		@deck = :deck
-		STARTINGCARDS.times do 
+		STARTINGCARDS.times do
 		card = @deck.draw
 		@board.push(card)
 		end
@@ -22,8 +22,8 @@ class Board < Deck
 
 	def render_board
 		header = "\nCurrentBoard:\n"
-		
-				
+
+
 	end
 
 	#Author: Kenton Steiner - 2/1/17
@@ -39,7 +39,7 @@ class Board < Deck
 		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
 		puts "This is not a set! Try again!" unless actual_set
 	end
-		
+
 
 	# Method Author: Kenton Steiner - 2/1/17
 	#Takes an array of indices (a set), and returns the cards at those indices
@@ -59,7 +59,7 @@ class Board < Deck
 	def add_cards
 		3.times { @board.push(@deck.draw) }
 	end
-		
-	
+
+
 
 end
