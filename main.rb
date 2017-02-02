@@ -39,7 +39,7 @@ def play_the_game
 		puts "Enter the indices, which you think these are a set: "
 		temp = gets
 		set = temp.split(",").map {|s| s.to_i}
-		board.indicies_of(set)
+		indices = board.indicies_of(set)
   	
 		if board.is_set(indices)
 			score[no] +=1
