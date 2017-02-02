@@ -59,17 +59,38 @@ class Board < Deck
 	# Description:
 	# Team Member           Date           Changes
 	#
-	def is_set?(indices)
-		potential_set = self.cards_at(indices)
+	def is_set?(i1,i2,i3)
+		#potential_set = self.cards_at(indices)
 		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
-		puts "This is not a set! Try again!" unless actual_set
+		#puts "This is not a set! Try again!" unless actual_set
+		return true
 	end
 
 	# Method Author: Jennifer Alarcon - 2/1/17
 	# Description: Return the number of possible sets from hand
 	# Team Member           Date           Changes
 	#
-	def total_possible_sets(indices)
+	def total_possible_sets
+		possible_sets = 0
+		possibleCombination = @board.combination(3).to_a
+		possibleCombination.each do |setOf3|
+			setOf3.each do
+				card1_index = @board.find_index(setOf3[0])
+				puts card1_index
+				card2_index = @board.find_index(setOf3[1])
+				puts card2_index
+				card3_index = @board.find_index(setOf3[2])
+				puts card3_index
+				puts "\n\n\n\n"
+				if (is_set?(card1_index, card2_index,card3_index))
+					possible_sets += 1
+				end
+			end
+
+
+
+		end
+
 
 	end
 
