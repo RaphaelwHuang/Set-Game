@@ -52,6 +52,9 @@ def play_the_game
 			score[no] -=1
 		end
 	else
+			score[no] -=1
+		end
+	else
 		board.add_cards
 		i += 3
 	end
