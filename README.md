@@ -2,7 +2,7 @@
 ### Game of Set
 
 ### Roles
-* Overall Project Manager: Kenton Steiner, Raphael Huang
+* Overall Project Manager: Kenton Steiner
 * Coding Manager: Jennifer Alarcon
 * Testing Manager: Tony Su
 * Documentation: Sunny Patel
