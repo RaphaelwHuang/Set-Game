@@ -1,4 +1,4 @@
-#Author: Kenton Steiner
+#Author: Kenton Steiner, Jenn Alarcon
 #Creation Date: 1/30/17
 
 
@@ -8,7 +8,7 @@ STARTINGCARDS = 12
 
 class Board < Deck
 	#deck and card can only be read
-	#class variabel to keep track of number of sets found
+	#class variable to keep track of number of sets found
 	@@total_sets_found
 	attr_reader :card, :deck
 
@@ -20,26 +20,15 @@ class Board < Deck
 	def initialize(cards = [])
 		@board = cards
 		@deck = Deck.new().deck
-		STARTINGCARDS.times do
-			card = @deck.shift
-			@board.push(card)
-		end
-	end
-
-	#Author: Kenton Steiner - 2/1/17
-	#Description:
-	# Team Member           Date           Changes
-	#
-	def render_board
-		header = "\nCurrentBoard:\n"
-
+		STARTINGCARDS.times { @board.push(@deck.shift) }
 	end
 
 		#Author: Jennifer Alarcon - 2/1/17
 		#Description: Show cards in current hand
 		# Team Member           Date           Changes
-		#
+		# Kenton Steiner				2/2/17				Added header to the board
 		def displayCurrentHand
+			header = "\nCurrentBoard:\n"
 			@board.length().times do |i|
 				puts "Card #{i}".center(35)
 				puts @board[i]
@@ -92,7 +81,13 @@ class Board < Deck
 		3.times { @board.push(@deck.draw) }
 	end
 
-
+	# Method Author: Kenton Steiner - 2/2/17
+	# Description: Returns the size of the board
+	# Team Member           Date           Changes
+	#
+	def board_size
+		@board.size
+	end
 
 
 
