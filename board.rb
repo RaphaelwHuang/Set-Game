@@ -9,7 +9,7 @@ STARTINGCARDS = 12
 class Board < Deck
 	#deck and card can only be read
 	#class variabel to keep track of number of sets found
-	@@total_sets_found
+	@@total_sets_found = 0
 	attr_reader :card, :deck
 
 	# Method Author: Kenton Steiner - 1/30/17
@@ -59,10 +59,18 @@ class Board < Deck
 	# Description:
 	# Team Member           Date           Changes
 	#
-	def is_set(indices)
+	def is_set?(indices)
 		potential_set = self.cards_at(indices)
 		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
 		puts "This is not a set! Try again!" unless actual_set
+	end
+
+	# Method Author: Jennifer Alarcon - 2/1/17
+	# Description: Return the number of possible sets from hand
+	# Team Member           Date           Changes
+	#
+	def total_possible_sets(indices)
+
 	end
 
 
