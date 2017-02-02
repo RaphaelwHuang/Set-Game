@@ -31,8 +31,9 @@ def play_the_game
 
   until $i == 81 || cards.length < 12 do
 	display
-	# method check_set(cards) need to create, which check whether there is a set
-	if check_set(cards)
+	puts "Do you need open 3 cards (yes/no)?"
+	ans = gets
+	if ans == "no"
 		puts "Enter your game number, from 0 to #{num-1}: "
 		tem = gets
 		no = tem.to_i
@@ -44,16 +45,16 @@ def play_the_game
 		if board.is_set(indices)
 			score[no] +=1
 			board.cards_at(indices)
-			booard.remove_cards_at(indices)
-			add_cards
- 
+			board.remove_cards_at(indices)
+			board.add_cards
+ 			i += 3
 		else
-			score[no] -=1
+			score[no] -=1			
 		end
 	else 
 		board.add_cards
+		i += 3
 	end
-	i +=3
   end
 
 	puts "The winner is player NO.#{score.index(score.max)}, and the score is #{score.max}."
