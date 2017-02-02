@@ -37,7 +37,8 @@ def play_the_game
 		tem = gets
 		no = tem.to_i
 		puts "Enter the indices, which you think these are a set: "
-		set = gets
+		temp = gets
+		set = temp.split(",").map {|s| s.to_i}
 		board.indicies_of(set.to_i)
   	
 		if board.is_set(indices)
