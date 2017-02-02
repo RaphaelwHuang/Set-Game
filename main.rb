@@ -1,4 +1,4 @@
-#Author: Jennifer Alarcon
+#Author: Jennifer Alarcon, Raphael Huang
 #Creation Date: 2/1/17
 
 require_relative 'board'
@@ -25,12 +25,11 @@ def play_the_game
   score = Array.new(num.to_i, 0)
 
 # get the cards.length from board.rb (how to do?)
-
+  display
   $i = 12
   $cardNum = 81
 
   until $i == 81 || cards.length < 12 do
-	display
 	puts "Do you need open 3 cards (yes/no)?"
 	ans = gets
 	if ans == "no"
@@ -48,6 +47,7 @@ def play_the_game
 			board.remove_cards_at(indices)
 			board.add_cards
  			i += 3
+			display
 		else
 			score[no] -=1			
 		end
