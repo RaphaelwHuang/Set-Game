@@ -1,8 +1,6 @@
 #Author: Kenton Steiner, Jenn Alarcon
 #Creation Date: 1/30/17
 
-
-require_relative 'card'
 require_relative 'deck'
 STARTINGCARDS = 12
 
@@ -41,6 +39,7 @@ class Board < Deck
 	def indicies_of(set)
 		indices = []
 		set.each {|card| indices << set.index(card) }
+		indices
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
@@ -57,27 +56,19 @@ class Board < Deck
 	# Method Author: Jennifer Alarcon - 2/1/17
 	# Description: Return the number of possible sets from hand
 	# Team Member           Date           Changes
-	#
-	def total_possible_sets
-		possible_sets = 0
+	# Kenton Steiner				2/3/17				Method now checks if a set remains, if so, returns an array of the indices
+	def does_set_exist
+		set_exists = false
 		possibleCombination = @board.combination(3).to_a
 		possibleCombination.each do |setOf3|
-			setOf3.each do
-				card1_index = @board.find_index(setOf3[0])
-				puts card1_index
-				card2_index = @board.find_index(setOf3[1])
-				puts card2_index
-				card3_index = @board.find_index(setOf3[2])
-				puts card3_index
-				puts "\n\n\n\n"
-				if (is_set?(card1_index, card2_index,card3_index))
-					possible_sets += 1
-				end
+				
+			if is_set?(setOf3) 
+					true_set = setOf3
+					set_exists = true
+					break
 			end
 
-
-
-		end
+		set_exists ? indices_of(true_set) : nil 
 
 
 	end
@@ -102,11 +93,11 @@ class Board < Deck
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
-	# Description: Adds 3 new cards to the board
+	# Description:Adds 3 new cards to the board
 	# Team Member           Date           Changes
 	#
 	def add_cards
-		3.times { @board.push(@deck.draw) }
+		3.times { @board.push(@deck.shift) }
 	end
 
 	# Method Author: Kenton Steiner - 2/2/17
@@ -118,5 +109,5 @@ class Board < Deck
 	end
 
 
-
+end
 end

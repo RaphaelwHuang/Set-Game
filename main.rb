@@ -5,12 +5,9 @@ require_relative 'board'
 
 #Author: Jenn Alarconr - 2/1/17
 #Description:
-# Team Member           Date           Changes
-<<<<<<< HEAD
-#  Jenn               2/1/17
-=======
-#           
->>>>>>> refs/remotes/origin/master
+# Team Member           Date           Changes  <<<<<<< HEAD
+#  Jenn               2/1/17          =======
+#>>>>>>> refs/remotes/origin/master
 #
 
 def display
