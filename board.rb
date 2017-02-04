@@ -1,14 +1,11 @@
-#Author: Kenton Steiner
+#Author: Kenton Steiner, Jenn Alarcon
 #Creation Date: 1/30/17
 
-
-require_relative 'card'
 require_relative 'deck'
 STARTINGCARDS = 12
 
 class Board < Deck
-	#deck and card can only be read
-	#class variabel to keep track of number of sets found
+	#class variable to keep track of number of sets found
 	@@total_sets_found
 	attr_reader :card, :deck
 
@@ -20,26 +17,15 @@ class Board < Deck
 	def initialize(cards = [])
 		@board = cards
 		@deck = Deck.new().deck
-		STARTINGCARDS.times do
-			card = @deck.shift
-			@board.push(card)
-		end
-	end
-
-	#Author: Kenton Steiner - 2/1/17
-	#Description:
-	# Team Member           Date           Changes
-	#
-	def render_board
-		header = "\nCurrentBoard:\n"
-
+		STARTINGCARDS.times { @board.push(@deck.shift) }
 	end
 
 		#Author: Jennifer Alarcon - 2/1/17
 		#Description: Show cards in current hand
 		# Team Member           Date           Changes
-		#
+		# Kenton Steiner				2/2/17				Added header to the board
 		def displayCurrentHand
+			header = "\nCurrentBoard:\n"
 			@board.length().times do |i|
 				puts "Card #{i}".center(35)
 				puts @board[i]
@@ -53,16 +39,38 @@ class Board < Deck
 	def indicies_of(set)
 		indices = []
 		set.each {|card| indices << set.index(card) }
+		indices
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
 	# Description:
 	# Team Member           Date           Changes
 	#
-	def is_set(indices)
-		potential_set = self.cards_at(indices)
+	def is_set?(i1,i2,i3)
+		#potential_set = self.cards_at(indices)
 		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
-		puts "This is not a set! Try again!" unless actual_set
+		#puts "This is not a set! Try again!" unless actual_set
+		return true
+	end
+
+	# Method Author: Jennifer Alarcon - 2/1/17
+	# Description: Return the number of possible sets from hand
+	# Team Member           Date           Changes
+	# Kenton Steiner				2/3/17				Method now checks if a set remains, if so, returns an array of the indices
+	def does_set_exist
+		set_exists = false
+		possibleCombination = @board.combination(3).to_a
+		possibleCombination.each do |setOf3|
+				
+			if is_set?(setOf3) 
+					true_set = setOf3
+					set_exists = true
+					break
+			end
+
+		set_exists ? indices_of(true_set) : nil 
+
+
 	end
 
 
@@ -85,15 +93,21 @@ class Board < Deck
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
-	# Description: Adds 3 new cards to the board
+	# Description:Adds 3 new cards to the board
 	# Team Member           Date           Changes
 	#
 	def add_cards
-		3.times { @board.push(@deck.draw) }
+		3.times { @board.push(@deck.shift) }
+	end
+
+	# Method Author: Kenton Steiner - 2/2/17
+	# Description: Returns the size of the board
+	# Team Member           Date           Changes
+	#
+	def board_size
+		@board.size
 	end
 
 
-
-
-
+end
 end
