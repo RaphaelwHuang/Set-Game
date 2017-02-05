@@ -72,6 +72,7 @@ class Board < Deck
 
 
 	end
+end
 
 
 	# Method Author: Kenton Steiner - 2/1/17
@@ -109,5 +110,5 @@ class Board < Deck
 	end
 
 
-end
+
 end

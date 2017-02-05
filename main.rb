@@ -23,7 +23,7 @@ def play_the_game
   selection = selection_prompt
 
   noSetsPossible = false
-  until selection.casecmp("exit") == 0 || board.board_size <= 3 || noSetsPossible
+  until selection.casecmp("exit") == 0 || board.size <= 3 || noSetsPossible
 
     #Need to validate set format if not, reprompt
     #if selection is valid
