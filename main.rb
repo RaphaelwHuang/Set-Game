@@ -5,16 +5,6 @@ require_relative 'board'
 
 #Author: Jenn Alarconr - 2/1/17
 #Description:
-# Team Member           Date           Changes
-
-#  Jenn               2/1/17
-#
-#
-
-def display
-  board = Board.new()
-  board.displayCurrentHand
-end
 
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
