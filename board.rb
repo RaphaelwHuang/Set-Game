@@ -27,7 +27,7 @@ class Board < Deck
 		def displayCurrentHand
 			header = "\nCurrentBoard:\n"
 			@board.length().times do |i|
-				puts "\n"+"Card #{i+1}".center(35)
+				puts "\nCard #{i+1}".center(35)
 				puts @board[i]
 			end
 		end
