@@ -1,8 +1,6 @@
 #Author: Kenton Steiner, Jenn Alarcon
 #Creation Date: 1/30/17
 
-
-require_relative 'card'
 require_relative 'deck'
 STARTINGCARDS = 12
 
@@ -29,7 +27,7 @@ class Board < Deck
 		def displayCurrentHand
 			header = "\nCurrentBoard:\n"
 			@board.length().times do |i|
-				puts "Card #{i}".center(35)
+				puts "Card #{i+1}".center(35)
 				puts @board[i]
 			end
 		end
@@ -47,7 +45,7 @@ class Board < Deck
 	# Description:
 	# Team Member           Date           Changes
 	#
-	def is_set?(i1,i2,i3)
+	def is_set?(i1)
 		#potential_set = self.cards_at(indices)
 		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
 		#puts "This is not a set! Try again!" unless actual_set
@@ -96,9 +94,9 @@ class Board < Deck
 	# Method Author: Kenton Steiner - 2/1/17
 	# Decription: Takes an array of indices, the set found, and deletes the cards from the board
 	# Team Member           Date           Changes
-	#
+	# Jenn									2/3/17 				convert from string to integer value
 	def remove_cards_at(indices)
-		indices.each { |x| @board.delete_at(x) }
+		indices.each { |x| @board.delete_at(x.to_i-1) }
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
