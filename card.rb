@@ -59,11 +59,62 @@ class Card
 
 	def to_s
 				return	"\t++++++++++++++++++\n"+
-								"\t+\t\t+\n"+
-								"\t+\t\t+\n"+
-  							"#{number.center(35)}\n#{shape.center(35)}\n#{shading.center(35)}\n#{color.center(35)}\n"+
-									"\t+\t\t+\n"+
-									"\t+\t\t+\n"+
-								"\t++++++++++++++++++\n"
+										"\t+\t\t+\n"+
+										"\t+\t\t+\n"+
+										"#{color.upcase.center(35)}\n"+
+										"#{shape}-#{shading}".center(35)+
+										"\n#{get_card}\n"+
+											"\t+\t\t+\n"+
+											"\t+\t\t+\n"+
+										"\t++++++++++++++++++\n"
+	end
+
+#Created by: Jenn Alarcon
+#Description: Prints card
+	def get_card
+			s =""
+			card = ""
+			if shape == "Diamond"
+				if shading == "Solid"
+						s = "◆"
+				elsif shading == "Striped"
+							s = "-◊-"
+				elsif shading == "Open"
+					s = "◇"
+				end
+
+
+			elsif shape == "Squiggle"
+				if shading == "Solid"
+					s = "⧓"
+				elsif shading == "Striped"
+					s = "-⋈-"
+				elsif shading == "Open"
+						s = "⋈"
+				end
+
+			elsif shape == "Oval"
+				if shading == "Solid"
+						s= "●"
+				elsif shading == "Striped"
+						s = "-◍-"
+				elsif shading == "Open"
+					 	s= "◯"
+				end
+
+			end
+
+			centLength = 34
+
+			if number == "3"
+				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n#{s.center(centLength)}\n"
+			elsif number == "2"
+				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n"
+			elsif number == "1"
+				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n#{s.center(centLength)}\n"
+			end
+
+			return card
+
 	end
 end

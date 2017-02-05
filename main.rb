@@ -20,6 +20,7 @@ def play_the_game
   board.displayCurrentHand
 
 
+  #Game Prompt
   selection = selection_prompt
   endOfGame = false
   total_cards_dealt = 12
