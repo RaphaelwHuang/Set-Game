@@ -9,7 +9,7 @@ require_relative 'board'
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
 # Team Member           Date           Changes
-# Jenn                  2/3/17          Split up code in methods, changed score initlizaiton messages
+#
 
 def play_the_game
   player_scores = initialize_scores_for_players
@@ -21,42 +21,82 @@ def play_the_game
 
 
   selection = selection_prompt
+  endOfGame = false
+  total_cards_dealt = 12
+  until selection.casecmp("exit") == 0 || endOfGame
 
-  noSetsPossible = false
-  until selection.casecmp("exit") == 0 || board.size <= 3 || noSetsPossible
+    setWasFound = false;
+    validEntry = true;
 
-    #Need to validate set format if not, reprompt
-    #if selection is valid
     if selection.casecmp('A') == 0
       board.add_cards
+      total_cards_dealt += 3 unless total_cards_dealt == 81
+
     else
         set = selection.split
-        #Correctly idenetified set?
-        if board.is_set?(set)
-          puts "You found a set! :-)"
-          board.remove_cards_at(set)
-          #identify_player
-          update_score(player_scores)
-          #board.add_cards
-        else
-          puts "The set you selected is not valid. :( Please try again."
-          selection = selection_prompt
-          #Need to validate set format if not, reprompt(write another method?)
+        validEntry = check_valid_input_set(set, board)
+        if validEntry
+          #if valid check if it actually a set
+          if board.is_set?(set)
+            setWasFound = true;
+            board.remove_cards_at(set)
+            #identify_player
+            update_score(player_scores)
+            board.add_cards unless total_cards_dealt == 81
+          else
+            puts "The set you selected is not valid. :( Please try again."
+            validEntry = false
+          end
         end
 
       end
-      #Refresh Terminal
-      system('clear')
-      board.displayCurrentHand
-      displayScore(player_scores)
+
+        system('clear')
+        board.displayCurrentHand
+        displayScore(player_scores) unless !validEntry
+        puts "Yay! A set was found! :-)" unless !setWasFound && !validEntry
+        puts "\n\t🔺 NOT A VALID ENTRY. PLEASE TRY AGAIN.🔺\n" unless validEntry
+
+
+      #check if end of game?
       selection = selection_prompt
-    #end until
+
     end
     system('clear')
     #End game
     puts "\nThanks for playing! Here are the final score(s): "
     displayScore(player_scores)
 
+end
+
+
+
+# Method Author: Jenn Alarcon- 2/5/17
+# Description: Check if game is at an end
+# Team Member           Date           Changes
+#
+def game_finished?
+end
+
+
+
+#Author: Jenn Alarcon - 2/5/17
+#Description: check if selected cards is a valid input
+def check_valid_input_set(set, board)
+  if set.length != 3
+
+    puts "\nInvalid selection. Please only enter three cards when choosing a set. \n"
+    return false
+  else
+    set.each do |card|
+      card = card.to_i
+      if !(card.between?(1, board.size))
+        puts "You selected a card that is not on the board. Please try again!"
+        return false
+      end
+    end
+  end
+    return true;
 end
 
 #Author: Jenn Alarcon - 2/3/17
