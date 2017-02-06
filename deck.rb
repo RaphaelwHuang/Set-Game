@@ -29,7 +29,7 @@ class Deck < Card
 	#Author: Sunny Patel
   # Returns the number of cards in the deck
   def size
-    @deck.length
+    @deck.size
   end
 
   # Method Author: Kenton Steiner - 1/30/17

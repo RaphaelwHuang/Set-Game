@@ -1,4 +1,4 @@
-#Author: Kenton Steiner
+#Author: Kenton Steiner, Jennifer Alarcon
 #Creation Date: 1/30/17
 
 

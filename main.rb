@@ -146,7 +146,7 @@ def selection_prompt
   puts "_____________________________________________________________________"
   puts "GAME COMMANDS\n"
   puts "EXIT: to end the game "
-  puts "'A' : to adds three more cards"
+  puts "'A' : to add three more cards"
   puts "\nOr just enter the card numbers you want to select as a set each followed by a space."
   puts "\n\tExample:  \n\tCard 1, Card 2, and Card 12 would be entered as followed: 1 2 12."
     puts "_____________________________________________________________________"
