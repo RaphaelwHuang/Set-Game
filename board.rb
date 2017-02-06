@@ -13,11 +13,12 @@ class Board < Deck
 	# Description: Initialize the board array, deck, and create the starting board
 	# Team Member           Date           Changes
 	# Jenn Alarcon					2/1/17					modification to deck and board initlization of cards
+	# Sunny Patel						2/5/17					utilized deck methods properly
 
 	def initialize(cards = [])
 		@board = cards
-		@deck = Deck.new().deck
-		STARTINGCARDS.times { @board.push(@deck.shift) }
+		@deck = Deck.new
+		STARTINGCARDS.times { @board << @deck.draw }
 	end
 
 		#Author: Jennifer Alarcon - 2/1/17
@@ -98,7 +99,7 @@ end
 	# Team Member           Date           Changes
 	#
 	def add_cards
-		3.times { @board.push(@deck.shift) }
+		3.times { @board << @deck.draw }
 	end
 
 	# Method Author: Kenton Steiner - 2/2/17
@@ -108,7 +109,5 @@ end
 	def board_size
 		@board.size
 	end
-
-
 
 end
