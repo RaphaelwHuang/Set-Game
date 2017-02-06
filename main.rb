@@ -28,6 +28,7 @@ def play_the_game
 
     setWasFound = false;
     validEntry = true;
+    printSetErrorMessage = false;
 
     if selection.casecmp('A') == 0
       board.add_cards
@@ -36,6 +37,8 @@ def play_the_game
     else
         set = selection.split
         validEntry = check_valid_input_set(set, board)
+        printSetErrorMessage = true;
+
         if validEntry
           #if valid check if it actually a set
           if board.is_set?(set)
@@ -56,11 +59,11 @@ def play_the_game
         board.displayCurrentHand
         displayScore(player_scores) unless !validEntry
         puts "Yay! A set was found! :-)" unless !setWasFound && !validEntry
+
         puts "\n\t🔺 NOT A VALID ENTRY. PLEASE TRY AGAIN.🔺\n" unless validEntry
+        puts "\n\t YOU SELECTED A CARD NOT SHOWN ON THE BOARD." unless !printSetErrorMessage
 
-
-      #check if end of game?
-      selection = selection_prompt
+      selection = selection_prompt #unless !game_over?(total_cards_dealt,board)
 
     end
     system('clear')
@@ -76,7 +79,8 @@ end
 # Description: Check if game is at an end
 # Team Member           Date           Changes
 #
-def game_finished?
+def game_over?(total_cards_dealt, board)
+  return total_cards_dealt == 81 && !board.does_set_exist
 end
 
 
@@ -91,7 +95,7 @@ def check_valid_input_set(set, board)
   else
     set.each do |card|
       card = card.to_i
-      if !(card.between?(1, board.size))
+      if !(card.between?(1, board.board_size))
         puts "You selected a card that is not on the board. Please try again!"
         return false
       end
