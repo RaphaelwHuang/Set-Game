@@ -3,9 +3,6 @@
 
 require_relative 'board'
 
-#Author: Jenn Alarconr - 2/1/17
-#Description:
-
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
 # Team Member           Date           Changes
@@ -95,19 +92,20 @@ def play_the_game
       game_over = game_over?(total_cards_dealt, board)
       selection = selection_prompt(allCardsDealt) unless game_over
 
-      end
-    system('clear')
-    #End game
-    puts "\nThanks for playing! Here are the final score(s): "
-    displayScore(player_scores)
+  end
+  system('clear')
 
-    #Show the time at the end
-    timeOut = Time.now
-    puts"The time right now is " + timeOut.to_s
-    displayTime(timeIn, timeOut)
+  #End game
+  puts "\nThanks for playing! Here are the final score(s): "
+  displayScore(player_scores)
 
-    #Get and display the winner
-    whoIsWinner(player_scores)
+  #Show the time at the end
+  timeOut = Time.now
+  puts"The time right now is " + timeOut.to_s
+  displayTime(timeIn, timeOut)
+
+  #Get and display the winner
+  whoIsWinner(player_scores)
 end
 
 
@@ -220,10 +218,16 @@ end
 #Author: Raphael Huang - 2/6/17
 #Description: Display the winner
 def whoIsWinner(scores)
+  #find the max score
   maxScore = scores.max
+
+  #find how many max scores, and get the index of these scores
   result = scores.each_index.select{ |i| scores[i] == maxScore}
+
+  #if there is one winner, just display its name, ex: player1
   if result.length == 1
      puts "The winner is Player #{result[0] + 1}!"
+  #if there are more than one players, display all their names
   else
      i = 0
      puts "The winners are: "
