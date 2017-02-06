@@ -149,15 +149,22 @@ end
 
 #Author: Jenn Alarcon - 2/3/17
 #Description: updates player score
+# Team Member           Date            Changes
+# Raphael Huang         2/6/17          change line156
 def update_score(scores)
   player = 1;
   #only ask which player if more than one player
   if scores.length > 1
     puts "Which player found the set?"
     player = gets.chomp!.to_i
+    while player > numPlayers do
+      puts "Please enter the vaild number"
+      player = gets.chomp!.to_i
+    end
   end
   scores[player-1] += 1
 end
+
 
 #Author: Jenn Alarcon - 2/3/17
 #Description: Returns if the selected cards are in the right format
