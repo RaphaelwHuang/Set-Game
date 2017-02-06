@@ -49,7 +49,7 @@ def play_the_game
             board.remove_cards_at(set)
             #identify_player
             update_score(player_scores)
-            board.add_cards unless total_cards_dealt == 81
+            board.add_cards unless total_cards_dealt == 81 || board.size >= 12
           else
             puts "The set you selected is not valid. :( Please try again."
             validEntry = false
