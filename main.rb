@@ -9,7 +9,8 @@ require_relative 'board'
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
 # Team Member           Date           Changes
-#
+# Tony Su               2/5/17         change line 45,47
+# Tony Su               2/5/17         change line 65
 
 def play_the_game
   player_scores = initialize_scores_for_players
@@ -28,6 +29,8 @@ def play_the_game
 
     setWasFound = false;
     validEntry = true;
+    printSetErrorMessage1 = false;
+    setErrorMessgae = []
 
     if selection.casecmp('A') == 0
       board.add_cards
@@ -35,10 +38,13 @@ def play_the_game
 
     else
         set = selection.split
-        validEntry = check_valid_input_set(set, board)
+        validEntry = check_valid_input_set(set, board, setErrorMessgae)
+        printSetErrorMessage = true;
+
         if validEntry
+          selectCards = board.cards_at(set)
           #if valid check if it actually a set
-          if board.is_set?(set)
+          if Board.actual_set?(selectCards)
             setWasFound = true;
             board.remove_cards_at(set)
             #identify_player
@@ -55,12 +61,12 @@ def play_the_game
         system('clear')
         board.displayCurrentHand
         displayScore(player_scores) unless !validEntry
-        puts "Yay! A set was found! :-)" unless !setWasFound && !validEntry
+        puts "Yay! A set was found! :-)" unless !setWasFound || !validEntry
+
         puts "\n\t🔺 NOT A VALID ENTRY. PLEASE TRY AGAIN.🔺\n" unless validEntry
+        puts "\n\t #{setErrorMessgae[0]}" unless !printSetErrorMessage
 
-
-      #check if end of game?
-      selection = selection_prompt
+      selection = selection_prompt #unless !game_over?(total_cards_dealt,board)
 
     end
     system('clear')
@@ -72,27 +78,29 @@ end
 
 
 
+
 # Method Author: Jenn Alarcon- 2/5/17
 # Description: Check if game is at an end
 # Team Member           Date           Changes
 #
-def game_finished?
+def game_over?(total_cards_dealt, board)
+  return total_cards_dealt == 81 && !board.does_set_exist
 end
 
 
 
 #Author: Jenn Alarcon - 2/5/17
 #Description: check if selected cards is a valid input
-def check_valid_input_set(set, board)
+def check_valid_input_set(set, board, setErrorMessgae)
   if set.length != 3
 
-    puts "\nInvalid selection. Please only enter three cards when choosing a set. \n"
+    setErrorMessgae.push "\nInvalid selection. Please only enter three cards when choosing a set. \n"
     return false
   else
     set.each do |card|
       card = card.to_i
-      if !(card.between?(1, board.size))
-        puts "You selected a card that is not on the board. Please try again!"
+      if !(card.between?(1, board.board_size))
+        setErrorMessgae.push "\nYou selected a card that is not on the board. Please try again!"
         return false
       end
     end
@@ -142,7 +150,6 @@ end
 
 #Author: Jenn Alarcon - 2/3/17
 def selection_prompt
-
   puts "_____________________________________________________________________"
   puts "GAME COMMANDS\n"
   puts "EXIT: to end the game "

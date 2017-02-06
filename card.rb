@@ -81,6 +81,8 @@ class Card
 
 #Created by: Jenn Alarcon
 #Description: Prints card
+# Team Member           Date           Changes
+# Tony SU		1/30/17		change line 124
 	def get_card
 			s =""
 			card = ""
@@ -121,7 +123,7 @@ class Card
 			elsif number == "2"
 				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n"
 			elsif number == "1"
-				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n#{s.center(centLength)}\n"
+				card = "#{s.center(centLength)}\n"
 			end
 
 			return card

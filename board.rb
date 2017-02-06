@@ -28,7 +28,8 @@ class Board < Deck
 		def displayCurrentHand
 			header = "\nCurrentBoard:\n"
 			@board.length().times do |i|
-				puts "\nCard #{i+1}".center(35)
+				puts "\n\t"
+				puts "Card #{i+1}".center(35)
 				puts @board[i]
 			end
 		end
@@ -42,16 +43,24 @@ class Board < Deck
 		set.each {|card| indices << set.index(card) }
 		indices
 	end
-
-	# Method Author: Kenton Steiner - 2/1/17
-	# Description:
+	
+	# Method Author: Tony Su - 2/2/17
+	# Description:  The method is a class method. The paremeter is the array of card. It return true if the cards in array is a set. False otherwise.
 	# Team Member           Date           Changes
 	#
-	def is_set?(i1)
-		#potential_set = self.cards_at(indices)
-		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
-		#puts "This is not a set! Try again!" unless actual_set
-		return true
+	def self.actual_set?(set)
+		return false unless set.length == 3
+		if set.map{|card| card.number}.uniq.length == 2
+			return false
+		elsif set.map{|card| card.shading}.uniq.length == 2
+			return false
+		elsif set.map{|card| card.shape}.uniq.length == 2
+			return false
+		elsif set.map{|card| card.color}.uniq.length == 2
+			return false
+		end	
+	
+		true
 	end
 
 	# Method Author: Jennifer Alarcon - 2/1/17
@@ -63,7 +72,7 @@ class Board < Deck
 		possibleCombination = @board.combination(3).to_a
 		possibleCombination.each do |setOf3|
 
-			if is_set?(setOf3)
+			if actual_set?(setOf3)
 					true_set = setOf3
 					set_exists = true
 					break
@@ -79,19 +88,26 @@ end
 	# Method Author: Kenton Steiner - 2/1/17
 	#Description: Takes an array of indices (a set), and returns the cards at those indices
 	# Team Member           Date           Changes
-	#
+	# Tony Su               2/6             change the index of @board to x-1 
 	def cards_at(indices)
 		cards = []
-		indices.each {|x| cards << @board[x] }
+		indices.each {|x| cards << @board[x.to_i-1] }
 		cards
 	end
 
-	# Method Author: Kenton Steiner - 2/1/17
+	# Method Author: Kenton Steiner, Jennifer Alarcon - 2/1/17
 	# Decription: Takes an array of indices, the set found, and deletes the cards from the board
 	# Team Member           Date           Changes
 	# Jenn									2/3/17 				convert from string to integer value
+	# Jenn									2/5/17 				changed algorithm, was deleting wrong cards
 	def remove_cards_at(indices)
-		indices.each { |x| @board.delete_at(x.to_i-1) }
+		elementToDelete1 = @board[indices[0].to_i-1]
+		elementToDelete2 = @board[indices[1].to_i-1]
+		elementToDelete3 = @board[indices[2].to_i-1]
+
+		@board.delete(elementToDelete1)
+		@board.delete(elementToDelete2)
+		@board.delete(elementToDelete3)
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
