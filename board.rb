@@ -43,16 +43,24 @@ class Board < Deck
 		set.each {|card| indices << set.index(card) }
 		indices
 	end
-
-	# Method Author: Kenton Steiner - 2/1/17
-	# Description:
+	
+	# Method Author: Tony Su - 2/2/17
+	# Description:  The method is a class method. The paremeter is the array of card. It return true if the cards in array is a set. False otherwise.
 	# Team Member           Date           Changes
 	#
-	def is_set?(i1)
-		#potential_set = self.cards_at(indices)
-		# actual_set = Card::is_this_a_set?(potential_set) # Need to create this function
-		#puts "This is not a set! Try again!" unless actual_set
-		return true
+	def self.actual_set?(set)
+		return false unless set.length == 3
+		if set.map{|card| card.number}.uniq.length == 2
+			return false
+		elsif set.map{|card| card.shading}.uniq.length == 2
+			return false
+		elsif set.map{|card| card.shape}.uniq.length == 2
+			return false
+		elsif set.map{|card| card.color}.uniq.length == 2
+			return false
+		end	
+	
+		true
 	end
 
 	# Method Author: Jennifer Alarcon - 2/1/17
@@ -64,7 +72,7 @@ class Board < Deck
 		possibleCombination = @board.combination(3).to_a
 		possibleCombination.each do |setOf3|
 
-			if is_set?(setOf3)
+			if actual_set?(setOf3)
 					true_set = setOf3
 					set_exists = true
 					break
