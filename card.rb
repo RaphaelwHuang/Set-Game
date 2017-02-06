@@ -16,19 +16,20 @@ class Card
 	SHADINGS = %w(Solid Striped Open)
 	COLORS = %w(Red Green Purple)
 
-	attr_accessor :number, :shape, :shading, :color
+	# Created by: Sunny Patel
+	# Date created: 1/26
+	# Modifications:
+	# 	Changed to read-only from read-write
+	attr_reader :number, :shape, :shading, :color
 
-=begin
-	Initializes the cards.
-   - Parameters can be entered in any order.
-   - Expects all parameters to be strings that are
-   included in the corresponding attribute array
-	Expects exactly 4 parameters
-=end
-
-#Created by:
-# Date created:
+#Created by: Sunny Patel
+# Date created: 1/26
 # Description:
+# 	Initializes the cards.
+# 			- Parameters can be entered in any order.
+# 			- Expects all parameters to be strings that are
+# 	included in the corresponding attribute array
+# 	Expects exactly 4 parameters
 #
 # Team Member           Date           Changes
 #
@@ -47,7 +48,15 @@ class Card
         raise "Unexpected Parameter: Intialization of Card failed."
       end
     end
-  end
+	end
+
+	# Created by: Sunny Patel
+	# Date created: 2/5
+	# Description: Returns true is self is a valid card.
+	def is_card?()
+		SHAPES.include?(self.shape) && COLORS.include?(self.color) && NUMBERS.include?(self.number) &&\
+		SHADINGS.include?(self.shading)
+	end
 
 #Created by: Sunny Patel
 # Date created: 1/26
