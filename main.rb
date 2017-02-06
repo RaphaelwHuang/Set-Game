@@ -28,7 +28,8 @@ def play_the_game
 
     setWasFound = false;
     validEntry = true;
-    printSetErrorMessage = false;
+    printSetErrorMessage1 = false;
+    setErrorMessgae = []
 
     if selection.casecmp('A') == 0
       board.add_cards
@@ -36,7 +37,7 @@ def play_the_game
 
     else
         set = selection.split
-        validEntry = check_valid_input_set(set, board)
+        validEntry = check_valid_input_set(set, board, setErrorMessgae)
         printSetErrorMessage = true;
 
         if validEntry
@@ -61,7 +62,7 @@ def play_the_game
         puts "Yay! A set was found! :-)" unless !setWasFound && !validEntry
 
         puts "\n\t🔺 NOT A VALID ENTRY. PLEASE TRY AGAIN.🔺\n" unless validEntry
-        puts "\n\t YOU SELECTED A CARD NOT SHOWN ON THE BOARD." unless !printSetErrorMessage
+        puts "\n\t #{setErrorMessgae[0]}" unless !printSetErrorMessage
 
       selection = selection_prompt #unless !game_over?(total_cards_dealt,board)
 
@@ -72,6 +73,7 @@ def play_the_game
     displayScore(player_scores)
 
 end
+
 
 
 
@@ -87,16 +89,16 @@ end
 
 #Author: Jenn Alarcon - 2/5/17
 #Description: check if selected cards is a valid input
-def check_valid_input_set(set, board)
+def check_valid_input_set(set, board, setErrorMessgae)
   if set.length != 3
 
-    puts "\nInvalid selection. Please only enter three cards when choosing a set. \n"
+    setErrorMessgae.push "\nInvalid selection. Please only enter three cards when choosing a set. \n"
     return false
   else
     set.each do |card|
       card = card.to_i
       if !(card.between?(1, board.board_size))
-        puts "You selected a card that is not on the board. Please try again!"
+        setErrorMessgae.push "\nYou selected a card that is not on the board. Please try again!"
         return false
       end
     end
@@ -146,7 +148,6 @@ end
 
 #Author: Jenn Alarcon - 2/3/17
 def selection_prompt
-
   puts "_____________________________________________________________________"
   puts "GAME COMMANDS\n"
   puts "EXIT: to end the game "
