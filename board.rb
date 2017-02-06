@@ -88,10 +88,10 @@ end
 	# Method Author: Kenton Steiner - 2/1/17
 	#Description: Takes an array of indices (a set), and returns the cards at those indices
 	# Team Member           Date           Changes
-	#
+	# Tony Su               2/6             change the index of @board to x-1 
 	def cards_at(indices)
 		cards = []
-		indices.each {|x| cards << @board[x] }
+		indices.each {|x| cards << @board[x-1] }
 		cards
 	end
 

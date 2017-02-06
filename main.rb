@@ -9,7 +9,8 @@ require_relative 'board'
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
 # Team Member           Date           Changes
-#
+# Tony Su               2/5/17         change line 45,46,48
+# Tony Su               2/5/17         change line 65
 
 def play_the_game
   player_scores = initialize_scores_for_players
@@ -41,8 +42,10 @@ def play_the_game
         printSetErrorMessage = true;
 
         if validEntry
+	  set_as_int = set.map {|x| x.to_i}
+          selectCards = board.cards_at(set_as_int)
           #if valid check if it actually a set
-          if board.is_set?(set)
+          if Board.actual_set?(selectCards)
             setWasFound = true;
             board.remove_cards_at(set)
             #identify_player
@@ -59,7 +62,7 @@ def play_the_game
         system('clear')
         board.displayCurrentHand
         displayScore(player_scores) unless !validEntry
-        puts "Yay! A set was found! :-)" unless !setWasFound && !validEntry
+        puts "Yay! A set was found! :-)" unless !setWasFound || !validEntry
 
         puts "\n\t🔺 NOT A VALID ENTRY. PLEASE TRY AGAIN.🔺\n" unless validEntry
         puts "\n\t #{setErrorMessgae[0]}" unless !printSetErrorMessage
