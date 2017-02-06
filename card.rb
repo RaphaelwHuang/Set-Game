@@ -20,7 +20,8 @@ class Card
 	# Date created: 1/26
 	# Modifications:
 	# 	Changed to read-only from read-write
-	attr_reader :number, :shape, :shading, :color
+	# 	Changed back to read-write after tests failed
+	attr_accessor :number, :shape, :shading, :color
 
 #Created by: Sunny Patel
 # Date created: 1/26
