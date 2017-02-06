@@ -95,12 +95,19 @@ end
 		cards
 	end
 
-	# Method Author: Kenton Steiner - 2/1/17
+	# Method Author: Kenton Steiner, Jennifer Alarcon - 2/1/17
 	# Decription: Takes an array of indices, the set found, and deletes the cards from the board
 	# Team Member           Date           Changes
 	# Jenn									2/3/17 				convert from string to integer value
+	# Jenn									2/5/17 				changed algorithm, was deleting wrong cards
 	def remove_cards_at(indices)
-		indices.each { |x| @board.delete_at(x.to_i-1) }
+		elementToDelete1 = @board[indices[0].to_i-1]
+		elementToDelete2 = @board[indices[1].to_i-1]
+		elementToDelete3 = @board[indices[2].to_i-1]
+
+		@board.delete(elementToDelete1)
+		@board.delete(elementToDelete2)
+		@board.delete(elementToDelete3)
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17

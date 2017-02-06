@@ -9,7 +9,7 @@ require_relative 'board'
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
 # Team Member           Date           Changes
-# Tony Su               2/5/17         change line 45,47
+# Tony Su               2/5/17         change line 45,46,48
 # Tony Su               2/5/17         change line 65
 
 def play_the_game
