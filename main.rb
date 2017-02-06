@@ -42,8 +42,7 @@ def play_the_game
         printSetErrorMessage = true;
 
         if validEntry
-	  set_as_int = set.map {|x| x.to_i}
-          selectCards = board.cards_at(set_as_int)
+          selectCards = board.cards_at(set)
           #if valid check if it actually a set
           if Board.actual_set?(selectCards)
             setWasFound = true;

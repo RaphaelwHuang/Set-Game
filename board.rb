@@ -91,7 +91,7 @@ end
 	# Tony Su               2/6             change the index of @board to x-1 
 	def cards_at(indices)
 		cards = []
-		indices.each {|x| cards << @board[x-1] }
+		indices.each {|x| cards << @board[x.to_i-1] }
 		cards
 	end
 
