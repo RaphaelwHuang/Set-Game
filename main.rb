@@ -11,10 +11,14 @@ require_relative 'board'
 # Team Member           Date           Changes
 # Tony Su               2/5/17         change line 45,47
 # Tony Su               2/5/17         change line 65
-
+# Raphael Huang         2/6/17         add line about timer from line 19
 def play_the_game
   player_scores = initialize_scores_for_players
   puts "You have selected #{player_scores.length} player(s). Let's play!"
+  
+  #Show the time at the beginning
+  timeIn = Time.now
+  puts"The time right now is " + timeIn.to_s
 
   #INITALLY BOARD HAS ARRAY OF 12 CARDS
   board = Board.new()
@@ -97,10 +101,14 @@ def play_the_game
     puts "\nThanks for playing! Here are the final score(s): "
     displayScore(player_scores)
 
-    #Need to getAndDisplayWinner
+    #Show the time at the end
+    timeOut = Time.now
+    puts"The time right now is " + timeOut.to_s
+    displayTime(timeIn, timeOut)
 
+    #Get and display the winner
+    whoIsWinner(player_scores)
 end
-
 
 
 # Method Author: Jenn Alarcon- 2/5/17
@@ -108,7 +116,6 @@ end
 def game_over?(total_cards_dealt, board)
   return total_cards_dealt == 81 && board.board_size < 3 #&& !board.does_set_exist
 end
-
 
 
 #Author: Jenn Alarcon - 2/5/17
@@ -157,7 +164,7 @@ def update_score(scores)
   if scores.length > 1
     puts "Which player found the set?"
     player = gets.chomp!.to_i
-    while player > numPlayers do
+    while player > player_scores.length do
       puts "Please enter the vaild number"
       player = gets.chomp!.to_i
     end
@@ -180,6 +187,7 @@ def initialize_scores_for_players
     puts "Invalid entry. Enter a number of players greater than 0: "
     numPlayers = gets.chomp!
   end
+
   #initilizes all scores for each player to 0
   scores = Array.new(numPlayers.to_i,0)
 end
@@ -198,5 +206,33 @@ def selection_prompt(allCardsDealt)
 end
 
 
-#STARTING THE GAME -- IT"S GONNA GET REAL FAM
+#Author: Raphael Huang - 2/6/17
+#Description: Display the using time
+def displayTime(timeIn, timeOut)
+  timeUse = timeOut - timeIn
+  t = timeUse.to_i
+  hour = t / 3600
+  min = (t % 3600) / 60
+  second = ((t % 3600) % 60).to_i
+  puts "The total using time is: " + hour.to_s + "hour(s) " + min.to_s + "minute(s) " + second.to_s + "seconds."  
+end
+
+#Author: Raphael Huang - 2/6/17
+#Description: Display the winner
+def whoIsWinner(scores)
+  maxScore = scores.max
+  result = scores.each_index.select{ |i| scores[i] == maxScore}
+  if result.length == 1
+     puts "The winner is Player #{result[0] + 1}!"
+  else
+     i = 0
+     puts "The winners are: "
+     while i < result.length do 
+        puts "Player #{result[i] + 1}"
+        i += 1
+     end
+  end
+end
+
+#STARTING THE GAME -- IT'S GONNA GET REAL FUN
 play_the_game
