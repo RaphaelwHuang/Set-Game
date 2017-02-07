@@ -244,7 +244,11 @@ end
 #Author: Kenton Steiner - 2/6/17
 # Description: Prints out the index of a card in a set for a hint
 def generate_hint(board, possible_set) 
-	puts "Card #{possible_set[2]} is in a set"
+  if Board.actual_set?(possible_set)	
+    puts "Card #{possible_set[2]} is in a set"
+  else 
+    puts "There is no set, pleaase add three cards." 
+  end
 end
 #STARTING THE GAME -- IT'S GONNA GET REAL FUN
 play_the_game

@@ -9,12 +9,15 @@ class ComputerPlayer
 #Description: create an AI computer
 
 def createComputer
-  puts"*******************************************************"
-  puts"Hi! Your scores are awesome! I am an AI computer, I also can play the game of seta. I can show you how amazing I am!!"
-  puts"Can I try the game? If you want me to join the game, please enter yes! If you want to end the game you can type anything you want."
+  puts"\n\n*******************************************************\n"
+  puts"Hi! I am an AI computer, I also can play the game of seta. I can show you how amazing I am!!\n"
+
+  sleep 1
+  puts"\nCan I try the game?"
+  puts"If you want me to join the game, please enter yes! If you want to end the game you can type anything you want:"
   answer = gets.chomp!
   if answer != "yes"
-    puts" Thank you and have fun!"
+    puts"Thank you and have fun!\n\n"
   end
   answer
 end
@@ -58,8 +61,11 @@ def letsPlay
     end 
     game_over = game_over?(total_cards, board)
   end
-  puts"HaHa, my final score is: " + score.to_s 
+
+  puts"\n***The Result***"
+  puts"My final score is: " + score.to_s 
 end
+
 
 #Author: Raphael Huang
 #Desccription: AI computer's main method
@@ -67,15 +73,20 @@ end
 def main
   #Check the createComputer
   if createComputer == "yes"  
+    
     #Show the time at the beginning
     timeIn = Time.now
+    puts"\n***Start the Game***"
     puts"The time I beign to play is " + timeIn.to_s
+
+    #Play the Gme, the computer find the set
+    puts"\n***Find the Set***"
     letsPlay
 
     #Show the time in the end 
     timeOut = Time.now
     puts"The time I finish the play is " + timeOut.to_s
-    puts" I just used: #{timeOut - timeIn} seconds to finsih the game."
+    puts"I just used: #{timeOut - timeIn} seconds to finsih the game.\n\n"
   end
 end
 
