@@ -104,6 +104,17 @@ class Board < Deck
 		@board.delete(cardToDelete3)
 	end
 
+     
+        # Method Author: Raphael Huang  - 2/6/17
+	# Description: remove the cards from the board for the AI computer
+	# Team Member           Date           Changes
+	def remove_cards_forAI(cardToRemove1, cardToRemove2, cardToRemove3)
+		@board.delete(cardToRemove1)
+		@board.delete(cardToRemove2)
+		@board.delete(cardToRemove3)
+	end
+
+
 	# Method Author: Kenton Steiner - 2/1/17
 	# Description:Adds 3 new cards to the board
 	# Team Member           Date           Changes

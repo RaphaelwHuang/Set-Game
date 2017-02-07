@@ -2,6 +2,7 @@
 #Creation Date: 2/1/17
 
 require_relative 'board'
+require_relative 'computer'
 
 #Author: Raphael Huang, Jenn Alarcon- 2/2/17
 #Description: play the game
@@ -116,6 +117,10 @@ def play_the_game
 
   #Get and display the winner
   whoIsWinner(player_scores)
+
+  #For the Computer Player
+  computer = ComputerPlayer.new()
+  computer.main
 end
 
 # Method Author: Jenn Alarcon- 2/5/17
@@ -168,11 +173,11 @@ def update_score(scores)
   #only ask which player if more than one player
   if scores.length > 1
     puts "Which player found the set?"
-		player = gets.chomp!.to_i
-		if player > scores.length
-    puts "Invalid player number.  Please enter a number between 1 and #{scores.length}"
-		player = gets.chomp!.to_i <= scores.length
-		end
+    player = gets.chomp!.to_i
+    while player > scores.length do
+      puts "Invalid player number. Please enter a number between 1 and #{scores.length}"
+      player = gets.chomp!.to_i
+    end
   end
   scores[player-1] += 1
 end

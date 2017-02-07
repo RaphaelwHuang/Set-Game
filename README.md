@@ -14,5 +14,5 @@ Sunny Patel - Card and Deck files, test cases for Card and Deck methods
 Jennifer Alarcon - Formatting of output, documentation, board file and main algorithm modification and bug fixing
 Kenton Steiner - Board file, bug fixing for the main algorithm, documentation, hint generator
 Tony Su - Overall testing, method for verifying a set is a set
-Raphael Huang - Inital Game Algorithm, timer, bug fixing in main
+Raphael Huang - Inital Game Algorithm, timer, create the AI Computer Playerand bug fixing in main
 
