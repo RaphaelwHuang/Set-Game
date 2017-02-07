@@ -1,12 +1,10 @@
-#Author: Kenton Steiner, Jenn Alarcon
+#Author: Kenton Steiner, Jenn Alarcon, Tony Su
 #Creation Date: 1/30/17
 
 require_relative 'deck'
 STARTINGCARDS = 12
 
 class Board < Deck
-	#class variable to keep track of number of sets found
-	@@total_sets_found
 	attr_reader :card, :deck
 
 	# Method Author: Kenton Steiner - 1/30/17
@@ -38,7 +36,7 @@ class Board < Deck
 	#Description: Returns an array of the indices of the cards to check for a set
 	# Team Member           Date           Changes
 	#
-	def indicies_of(set)
+	def indices_of(set)
 		indices = []
 		set.each {|card| indices << set.index(card) }
 		indices
@@ -68,21 +66,16 @@ class Board < Deck
 	# Team Member           Date           Changes
 	# Kenton Steiner				2/3/17				Method now checks if a set remains, if so, returns an array of the indices
 	def does_set_exist
-		set_exists = false
+		true_set = []
 		possibleCombination = @board.combination(3).to_a
-		possibleCombination.each do |setOf3|
-
-			if actual_set?(setOf3)
-					true_set = setOf3
-					set_exists = true
-					break
-			end
-
-		set_exists ? indices_of(true_set) : nil
-
-
+		possibleCombination.each do |setOf3|  
+			if Board.actual_set?(setOf3)
+				true_set = setOf3
+				break
+			end 
+		end
+		return true_set
 	end
-end
 
 
 	# Method Author: Kenton Steiner - 2/1/17
@@ -96,18 +89,19 @@ end
 	end
 
 	# Method Author: Kenton Steiner, Jennifer Alarcon - 2/1/17
-	# Decription: Takes an array of indices, the set found, and deletes the cards from the board
+	# Decription: Takes an array of indices (the set found) and deletes the cards from the board
 	# Team Member           Date           Changes
 	# Jenn									2/3/17 				convert from string to integer value
 	# Jenn									2/5/17 				changed algorithm, was deleting wrong cards
+	# 
 	def remove_cards_at(indices)
-		elementToDelete1 = @board[indices[0].to_i-1]
-		elementToDelete2 = @board[indices[1].to_i-1]
-		elementToDelete3 = @board[indices[2].to_i-1]
+		cardToDelete1 = @board[indices[0].to_i-1]
+		cardToDelete2 = @board[indices[1].to_i-1]
+		cardToDelete3 = @board[indices[2].to_i-1]
 
-		@board.delete(elementToDelete1)
-		@board.delete(elementToDelete2)
-		@board.delete(elementToDelete3)
+		@board.delete(cardToDelete1)
+		@board.delete(cardToDelete2)
+		@board.delete(cardToDelete3)
 	end
 
 	# Method Author: Kenton Steiner - 2/1/17
