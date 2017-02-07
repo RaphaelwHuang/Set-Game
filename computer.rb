@@ -10,9 +10,11 @@ class ComputerPlayer
 
 def createComputer
   puts"\n\n*******************************************************\n"
-  puts"Hi! I am an AI computer, I also can play the game of seta. I can show you how amazing I am!!\n"
+  puts"Hi! I am an AI computer, I also can play the game of seta.Let me show you how amazing I am! I can find all set in ONE SECOND.\n"
 
+  #delay the output
   sleep 1
+
   puts"\nCan I try the game?"
   puts"If you want me to join the game, please enter yes! If you want to end the game you can type anything you want:"
   answer = gets.chomp!
