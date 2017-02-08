@@ -77,6 +77,7 @@ def play_the_game
 
         system('clear')
         board.displayCurrentHand
+
         #Only display score if entry was valid
         displayScore(player_scores) unless !validEntry
 				

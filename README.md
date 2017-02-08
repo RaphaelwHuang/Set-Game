@@ -17,7 +17,7 @@ Jennifer Alarcon - Formatting of output, documentation, board file and main algo
 
 Kenton Steiner - Board file, bug fixing for the main algorithm, documentation, hint generator, implementing ruby gem colorize for card display<br />
 
-Tony Su - Overall testing, method for verifying a set is a set<br />
+Tony Su - Testing of board file, method for verifying a set is a set, does_set_exist enhancement<br />
 
 Raphael Huang - Inital Game Algorithm, timer, create the AI Computer Player and bug fixing in main<br />
 
