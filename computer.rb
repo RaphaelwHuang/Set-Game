@@ -10,7 +10,7 @@ class ComputerPlayer
 
 def createComputer
   puts"\n\n*******************************************************\n"
-  puts"Hi! I am an AI computer, I also can play the game of seta.Let me show you how amazing I am! I can find all set in ONE SECOND.\n"
+  puts"Hi! I am an AI computer, I also can play the game of set. Let me show you how amazing I am! I can find all sets in ONE SECOND.\n"
 
   #delay the output
   sleep 1
@@ -48,7 +48,6 @@ def letsPlay
     #Find the set
     set = board.does_set_exist
     check = Board.actual_set?(set)
-    puts"Check: My answer is #{check}"
     if check
       board.remove_cards_forAI(set[0], set[1], set[2])
       if total_cards < 81 && board.board_size < 12
@@ -57,7 +56,7 @@ def letsPlay
 	score += 1
       end
     else
-      puts"***There is no set in the board, I have to add 3 cards.***" 
+      puts"***No set in the board, adding 3 cards.***" 
       board.add_cards
       total_cards += 3
     end 
@@ -70,7 +69,7 @@ end
 
 
 #Author: Raphael Huang
-#Desccription: AI computer's main method
+#Description: AI computer's main method
 
 def main
   #Check the createComputer
@@ -79,7 +78,7 @@ def main
     #Show the time at the beginning
     timeIn = Time.now
     puts"\n***Start the Game***"
-    puts"The time I beign to play is " + timeIn.to_s
+    puts"The time I begin to play is " + timeIn.to_s
 
     #Play the Gme, the computer find the set
     puts"\n***Find the Set***"
@@ -88,7 +87,7 @@ def main
     #Show the time in the end 
     timeOut = Time.now
     puts"The time I finish the play is " + timeOut.to_s
-    puts"I just used: #{timeOut - timeIn} seconds to finsih the game.\n\n"
+    puts"I just used: #{timeOut - timeIn} seconds to finish the game.\n\n"
   end
 end
 

@@ -9,7 +9,7 @@ class TestBoard < Test::Unit::TestCase
 
   # Author: Tony Su - 2/5     
   def test_actual_set
-    #case 1: 3 different, 1 same
+    #case 1: 3 same, 1 different
     card1 = Card.new("Diamond","1","Solid","Red")
     card2 = Card.new("Squiggle","1","Solid","Red")
     card3 = Card.new("Oval","1","Solid","Red")

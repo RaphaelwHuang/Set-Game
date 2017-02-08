@@ -1,4 +1,4 @@
-#Author: Kenton Steiner, Jenn Alarcon, Tony Su
+#Author: Kenton Steiner, Jenn Alarcon, Tony Su, Raphael Huang
 #Creation Date: 1/30/17
 
 require_relative 'deck'
