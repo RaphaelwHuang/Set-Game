@@ -13,7 +13,8 @@ class Board < Deck
 	# Jenn Alarcon					2/1/17					modification to deck and board initlization of cards
 	# Sunny Patel						2/5/17					utilized deck methods properly
 
-	def initialize(cards = [])
+	def initialize()
+		cards = []
 		@board = cards
 		@deck = Deck.new
 		STARTINGCARDS.times { @board << @deck.draw }
@@ -31,16 +32,6 @@ class Board < Deck
 				puts @board[i]
 			end
 		end
-
-	#Author: Kenton Steiner - 2/1/17
-	#Description: Returns an array of the indices of the cards to check for a set
-	# Team Member           Date           Changes
-	#
-	def indices_of(set)
-		indices = []
-		set.each {|card| indices << set.index(card) }
-		indices
-	end
 	
 	# Method Author: Tony Su - 2/2/17
 	# Description:  The method is a class method. The paremeter is the array of card. It return true if the cards in array is a set. False otherwise.

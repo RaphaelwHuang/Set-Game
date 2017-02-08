@@ -21,3 +21,8 @@ Tony Su - Overall testing, method for verifying a set is a set<br />
 
 Raphael Huang - Inital Game Algorithm, timer, create the AI Computer Player and bug fixing in main<br />
 
+
+### To Run the game
+
+First install the ruby gem 'colorize' by typing "gem install 'colorize'" in the command line.  
+Then typing "ruby main.rb" will run the game of set

@@ -35,6 +35,7 @@ def play_the_game
     setWasFound = false;
     validEntry = true;
     setErrorMessage = []
+		
     allCardsDealt = total_cards_dealt == 81
     addedCards = false
 		hintGiven = false
@@ -76,7 +77,7 @@ def play_the_game
 
         system('clear')
         board.displayCurrentHand
-
+	puts total_cards_dealt
         #Only display score if entry was valid
         displayScore(player_scores) unless !validEntry
 				
@@ -99,7 +100,6 @@ def play_the_game
         #print proper corresponding error message
         puts "\n\t #{setErrorMessage[0]}" unless validEntry
 	possible_set = board.does_set_exist!
-        total_cards_dealt += (board.board_size - 12)
         game_over = game_over?(total_cards_dealt, board, possible_set)
         selection = selection_prompt(allCardsDealt, hintGiven,timeIn) unless game_over
 
