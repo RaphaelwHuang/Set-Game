@@ -25,7 +25,7 @@ def play_the_game
 
 
   #Game Prompt
-  selection = selection_prompt(false, false)
+  selection = selection_prompt(false, false,timeIn)
   possible_set = board.does_set_exist!
   total_cards_dealt = board.board_size
   game_over = game_over?(total_cards_dealt, board, possible_set)
@@ -101,7 +101,7 @@ def play_the_game
 	possible_set = board.does_set_exist!
         total_cards_dealt += (board.board_size - 12)
         game_over = game_over?(total_cards_dealt, board, possible_set)
-        selection = selection_prompt(allCardsDealt, hintGiven) unless game_over
+        selection = selection_prompt(allCardsDealt, hintGiven,timeIn) unless game_over
 
   end
   system('clear')
