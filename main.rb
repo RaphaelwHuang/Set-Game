@@ -13,10 +13,10 @@ require_relative 'computer'
 def play_the_game
   player_scores = initialize_scores_for_players
   puts "You have selected #{player_scores.length} player(s). Let's play!"
-  
+
   #Show the time at the beginning
   timeIn = Time.now
-  puts"The time right now is " + timeIn.to_s
+  puts "The time right now is " + timeIn.to_s
 
   #INITALLY BOARD HAS ARRAY OF 12 CARDS
   board = Board.new()
@@ -30,7 +30,7 @@ def play_the_game
 	possible_set = board.does_set_exist
   game_over = game_over?(total_cards_dealt, board, possible_set)
   until selection.casecmp("exit") == 0 || game_over
-	
+
     #To check for valid input from player
     setWasFound = false;
     validEntry = true;
@@ -48,7 +48,7 @@ def play_the_game
       properSet = true
 
 		# When user selects to give a hint
-		elsif selection.casecmp('H') == 0 
+		elsif selection.casecmp('H') == 0
 			hintGiven = true
 			properSet = true
 
@@ -98,7 +98,6 @@ def play_the_game
         puts "\n\t🔺 NOT A VALID ENTRY. PLEASE TRY AGAIN.🔺\n" unless validEntry
         #print proper corresponding error message
         puts "\n\t #{setErrorMessage[0]}" unless validEntry
-				
 			possible_set = board.does_set_exist
       game_over = game_over?(total_cards_dealt, board, possible_set)
       selection = selection_prompt(allCardsDealt, hintGiven, timeIn) unless game_over
@@ -185,10 +184,10 @@ end
 
 #Author: Jenn Alarcon - 2/3/17
 def initialize_scores_for_players
-  puts "Enter the number of players: "
+  puts "Enter the number of players (MAX NUMBER OF PLAYERS IS 5): "
   numPlayers = gets.chomp!
-  until numPlayers.to_i > 0
-    puts "Invalid entry. Enter a number of players greater than 0: "
+  until numPlayers.to_i > 0 && numPlayers.to_i < 6
+    puts "Invalid entry. Enter a number of players greater than 0 and less than 6: "
     numPlayers = gets.chomp!
   end
 
@@ -222,7 +221,7 @@ def displayTime(timeIn, timeOut)
   hour = t / 3600
   min = (t % 3600) / 60
   second = ((t % 3600) % 60).to_i
-  puts "The total game time is: " + hour.to_s + "hour(s) " + min.to_s + "minute(s) " + second.to_s + "seconds."  
+  puts "The total game time is: " + hour.to_s + "hour(s) " + min.to_s + "minute(s) " + second.to_s + "seconds."
 end
 
 #Author: Raphael Huang - 2/6/17
@@ -247,11 +246,12 @@ end
 
 #Author: Kenton Steiner - 2/6/17
 # Description: Prints out the index of a card in a set for a hint
-def generate_hint(board, possible_set) 
-  if Board.actual_set?(possible_set)	
+def generate_hint(board, possible_set)
+  if Board.actual_set?(possible_set)
     puts "Card #{possible_set[2]} is in a set"
   else 
     puts "There is no set, please add three cards." 
+
   end
 end
 #STARTING THE GAME -- IT'S GONNA GET REAL FUN
