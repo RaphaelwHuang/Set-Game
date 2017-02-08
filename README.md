@@ -13,9 +13,9 @@ Also list if people worked together (pair programmed) on a particular section.<b
 
 Sunny Patel - Card and Deck files, test cases for Card and Deck methods<br />
 
-Jennifer Alarcon - Formatting of output, documentation, board file and main algorithm modification and bug fixing<br />
+Jennifer Alarcon - Formatting of output, documentation, board file and main algorithm modification and bug fixing, implementing ruby gem colorize for card display<br />
 
-Kenton Steiner - Board file, bug fixing for the main algorithm, documentation, hint generator<br />
+Kenton Steiner - Board file, bug fixing for the main algorithm, documentation, hint generator, implementing ruby gem colorize for card display<br />
 
 Tony Su - Overall testing, method for verifying a set is a set<br />
 

@@ -27,7 +27,7 @@ class Board < Deck
 			header = "\nCurrentBoard:\n"
 			@board.length().times do |i|
 				puts "\n\t"
-				puts "Card #{i+1}".center(35)
+				puts "\tCard #{i+1}"
 				puts @board[i]
 			end
 		end

@@ -248,7 +248,8 @@ end
 # Description: Prints out the index of a card in a set for a hint
 def generate_hint(board, possible_set)
   if Board.actual_set?(possible_set)
-    puts "Card #{possible_set[2]} is in a set"
+		puts "The following card is in a set: "
+    puts possible_set[2]
   else 
     puts "There is no set, please add three cards." 
 

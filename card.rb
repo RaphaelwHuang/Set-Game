@@ -7,7 +7,7 @@
 # Symbol: Diamond, Squiggle, Oval
 # Shading: Solid, Striped, Open
 # Color: Red, Green, Purple
-
+require 'colorize'
 class Card
 
 	# Arrays of card attributes
@@ -67,7 +67,7 @@ class Card
 # Jenn Alarcon		1/30/17		Modified String Dislay
 
 
-	def to_s
+	def to_s2
 				return	"\t++++++++++++++++++\n"+
 										"\t+\t\t+\n"+
 										"\t+\t\t+\n"+
@@ -83,50 +83,50 @@ class Card
 #Description: Prints card
 # Team Member           Date           Changes
 # Tony SU		1/30/17		change line 124
-	def get_card
+	def to_s
 			s =""
 			card = ""
 			if shape == "Diamond"
 				if shading == "Solid"
-						s = "◆"
+						s = " ◆"
 				elsif shading == "Striped"
-							s = "-◊-"
+							s = "-◇ -"
 				elsif shading == "Open"
-					s = "◇"
+					s = " ◇"
 				end
 
 
 			elsif shape == "Squiggle"
 				if shading == "Solid"
-					s = "⧓"
+					s = " ⧓"
 				elsif shading == "Striped"
-					s = "-⋈-"
+					s = "-⋈ -"
 				elsif shading == "Open"
-						s = "⋈"
+						s = " ⋈"
 				end
 
 			elsif shape == "Oval"
 				if shading == "Solid"
-						s= "●"
+						s= " ●"
 				elsif shading == "Striped"
-						s = "-◍-"
+						s = "-◯ -"
 				elsif shading == "Open"
-					 	s= "◯"
+					 	s= " ◯"
 				end
 
 			end
 
-			centLength = 34
-
-			if number == "3"
-				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n#{s.center(centLength)}\n"
-			elsif number == "2"
-				card = "#{s.center(centLength)}\n#{s.center(centLength)}\n"
-			elsif number == "1"
-				card = "#{s.center(centLength)}\n"
+			number.to_i.times do 
+				if color == "Green"
+						puts "\t"+ s.colorize(:green)
+				elsif color == "Red"
+						puts "\t"+ s.colorize(:red)
+				elsif color == "Purple"
+						puts "\t"+ s.colorize(:magenta)
+				end 		
+			
 			end
+			return " "
 
-			return card
-
-	end
+		end
 end
