@@ -1,4 +1,4 @@
-load 'deck.rb'
+require_relative '../board'
 require "test/unit"
 class TestDeck < Test::Unit::TestCase
   # Author: Sunny Patel - 2/5

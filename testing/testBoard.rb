@@ -1,8 +1,7 @@
 # testing the actual_set? method
 
-
-load 'board.rb'
-load 'card.rb'
+require_relative '../board'
+require_relative '../card'
 require "test/unit"
  
 class TestBoard < Test::Unit::TestCase

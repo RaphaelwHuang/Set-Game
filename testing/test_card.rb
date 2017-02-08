@@ -1,4 +1,4 @@
-load 'card.rb'
+require_relative '../card'
 require "test/unit"
 class TestCard < Test::Unit::TestCase
   # Author: Sunny Patel - 2/5

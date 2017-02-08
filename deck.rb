@@ -2,7 +2,7 @@
 # Creation Date:: 1/27
 
 
-load 'card.rb'
+require_relative 'card'
 class Deck < Card
   # deck can only be read
   attr_reader :deck
