@@ -46,7 +46,8 @@ def letsPlay
   game_over = game_over?(total_cards, board)
   until game_over
     #Find the set
-    set = board.does_set_exist
+    set = board.does_set_exist!
+    total_cards += (board.board_size-12)
     check = Board.actual_set?(set)
     puts"Check: My answer is #{check}"
     if check

@@ -60,19 +60,33 @@ class Board < Deck
 	
 		true
 	end
+	
+	# Method Author: Kenton Steiner - 2/1/17
+	# Description:Adds 3 new cards to the board
+	# Team Member           Date           Changes
+	#
+	def add_cards
+		3.times { @board << @deck.draw }
+	end
 
 	# Method Author: Jennifer Alarcon - 2/1/17
 	# Description: Return the number of possible sets from hand
 	# Team Member           Date           Changes
 	# Kenton Steiner				2/3/17				Method now checks if a set remains, if so, returns an array of the indices
-	def does_set_exist
+	#  Tony Su                             2/7/17              change the method to add cards if there is no set on board.
+	def does_set_exist!
 		true_set = []
-		possibleCombination = @board.combination(3).to_a
-		possibleCombination.each do |setOf3|  
-			if Board.actual_set?(setOf3)
-				true_set = setOf3
-				break
-			end 
+		while true_set.length == 0 do
+			possibleCombination = @board.combination(3).to_a
+			possibleCombination.each do |setOf3|  
+				if Board.actual_set?(setOf3)
+					true_set = setOf3
+					break
+				end 
+			end
+			if true_set.length == 0
+				add_cards
+			end
 		end
 		return true_set
 	end
@@ -115,13 +129,6 @@ class Board < Deck
 	end
 
 
-	# Method Author: Kenton Steiner - 2/1/17
-	# Description:Adds 3 new cards to the board
-	# Team Member           Date           Changes
-	#
-	def add_cards
-		3.times { @board << @deck.draw }
-	end
 
 	# Method Author: Kenton Steiner - 2/2/17
 	# Description: Returns the size of the board
