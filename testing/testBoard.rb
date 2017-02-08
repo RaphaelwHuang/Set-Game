@@ -1,6 +1,7 @@
 # testing the actual_set? method
 
 require_relative '../board'
+require_relative '../deck'
 require_relative '../card'
 require "test/unit"
  
@@ -79,5 +80,24 @@ class TestBoard < Test::Unit::TestCase
     assert_equal(false, Board.actual_set?(cards) )
   end
 
+  # Author: Tony Su - 2/5
+  def test_board_init
+    assert_nothing_raised {Board.new}
+  end
+
+  # Author: Tony Su - 2/5
+  def test_board_size
+    board = Board.new
+    assert_equal(12, board.board_size, "Expected size of 12.")
+  end
+
+  # Author: Tony Su - 2/5 
+  def test_does_set_exist
+    board = Board.new
+    sets = board.does_set_exist!
+    assert_equal(3, sets.length)
+    assert_equal(true, Board.actual_set?(sets))
+    
+  end
  
 end
