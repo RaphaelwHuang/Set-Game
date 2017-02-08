@@ -226,7 +226,8 @@ end
 
 #Author: Raphael Huang - 2/6/17
 #Description: Display the winner
-# Kenton Steiner - 2/6/17: Put the result printing in a for each loop
+#Team member        Time              Changes
+#Kenton Steiner    2/6/17      Put the result printing in a for each loop
 def whoIsWinner(scores)
   #find the max score
   maxScore = scores.max
@@ -245,7 +246,9 @@ def whoIsWinner(scores)
 end
 
 #Author: Kenton Steiner - 2/6/17
-# Description: Prints out the index of a card in a set for a hint
+#Description: Prints out the index of a card in a set for a hint
+#Team member         Time              Changes
+#Raphael Huang      2/6/17        Put the situation that there is no set
 def generate_hint(board, possible_set)
   if Board.actual_set?(possible_set)
     puts "Card #{possible_set[2]} is in a set"

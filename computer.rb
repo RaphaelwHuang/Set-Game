@@ -5,7 +5,7 @@ require_relative 'board'
 
 class ComputerPlayer
 
-#Author: Raphael Huang
+#Author: Raphael Huang  - 2/6/17
 #Description: create an AI computer
 
 def createComputer
@@ -18,21 +18,21 @@ def createComputer
   puts"\nCan I try the game?"
   puts"If you want me to join the game, please enter yes! If you want to end the game you can type anything you want:"
   answer = gets.chomp!
-  if answer != "yes"
+  if answer.casecmp("yes") != 0
     puts"Thank you and have fun!\n\n"
   end
   answer
 end
 
 
-# Method Author: Jenn Alarcon- 2/5/17
+# Method Author: Jenn Alarcon  - 2/5/17
 # Description: Check if game is at an end
 def game_over?(total_cards, board)
   return total_cards == 81 && board.board_size < 12
 end
 
 
-#Author: Raphael Huang
+#Author: Raphael Huang  - 2/6/17
 #Desccription: AI computer is playing the game
 
 def letsPlay
@@ -68,12 +68,12 @@ def letsPlay
 end
 
 
-#Author: Raphael Huang
+#Author: Raphael Huang  - 2/6/17
 #Description: AI computer's main method
 
 def main
   #Check the createComputer
-  if createComputer == "yes"  
+  if createComputer.casecmp("yes") == 0  
     
     #Show the time at the beginning
     timeIn = Time.now
